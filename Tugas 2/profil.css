@@ -1,0 +1,293 @@
+:root {
+  --bg: #0d1117;
+  --bg-deep: #090c10;
+  --panel: #131a22;
+  --teal: #2dd4bf;
+  --amber: #fbbf24;
+  --line: #1f2a37;
+  --ink: #e6edf3;
+  --ink-dim: #8fa3b3;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--teal);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, .brand {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.6em;
+}
+
+/* ---------- HEADER & NAV ---------- */
+
+header {
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  font-size: 1.3rem;
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.brand-tag {
+  color: var(--teal);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--ink-dim);
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+
+main {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+#content {
+  flex: 2 1 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+article {
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 32px;
+  border: 1px solid var(--line);
+}
+
+article h1 {
+  font-size: 1.6rem;
+  line-height: 1.35;
+}
+
+article p {
+  color: var(--ink-dim);
+  max-width: 62ch;
+}
+
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.skill-card {
+  flex: 1 1 200px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--teal);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.skill-card h3 {
+  font-size: 1rem;
+  color: var(--teal);
+  font-family: "JetBrains Mono", monospace;
+  margin-bottom: 0.4em;
+}
+
+.skill-card p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+/* ---------- ASIDE ---------- */
+
+aside {
+  flex: 1 1 260px;
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 28px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  align-self: flex-start;
+}
+
+.foto-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.foto-profil {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 12px;
+  border: 2px solid var(--teal);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.foto-caption {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+}
+
+.aside-peran {
+  color: var(--teal);
+  font-size: 0.88rem;
+  font-family: "JetBrains Mono", monospace;
+  margin: 0 0 18px;
+}
+
+.biodata-grid {
+  width: 100%;
+  margin: 0 0 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.biodata-card {
+  flex: 1 1 100px;
+  min-width: 100px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.biodata-card .label {
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--amber);
+}
+
+.biodata-card .value {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.kutipan {
+  font-style: italic;
+  color: var(--ink-dim);
+  font-size: 0.88rem;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  margin: 0;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 22px;
+  color: var(--ink-dim);
+  font-size: 0.88rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 720px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  main {
+    padding: 28px 20px;
+  }
+
+  article {
+    padding: 24px;
+  }
+
+  aside {
+    align-self: stretch;
+  }
+}
