@@ -1,0 +1,15 @@
+/* membuat elemen h1 berwarna merah */
+h1 {
+    color: red;
+    font-size: 30px;
+}
+/* membuat elemen h2 berwarna biru */
+h2 {
+    color: blue;
+    font-size: 25px;
+}
+/* membuat elemen p berwarna hijau */
+p {
+    color: green;
+    font-size: 20px;
+}
