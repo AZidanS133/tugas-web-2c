@@ -30,3 +30,66 @@ nav{
 text-decoration: none;
 columns: navy;
 }
+/* menghilalkan garis bawah link */
+.nav li a:hover{
+    text-decoration: none;
+    color: navy;
+}
+/* ketika navigasi disorot mouse */
+.nav li a:hover{
+    background-color: lightblue;
+    color: white;
+}
+/* untuk css banner */
+.banner{
+    height: 300px;
+    background-color: skyblue;
+    width: 100%;
+    /* atur ukuran gambar */
+    background-size: cover;
+    /* mengatur posisi gambar */
+    background-position: 0px-150px;
+    /* mengatur garis tepi tebal warna biru */
+    border-top: 5px solid navy;
+    border-bottom: 5px solid skyblue;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* untuk isi */
+.isi{
+    padding: 20px;
+}
+.isi h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.isi penulis{
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.isi penulis a{
+    text-decoration: none;
+    color: navy;
+}
+.isi p{
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+/* untuk footer */
+footer{
+    background-color: navy;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.footer .copyright{
+    font-size: 14px;
+    margin: 0;
+    color: white;
+}
