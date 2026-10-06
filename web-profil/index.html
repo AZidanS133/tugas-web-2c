@@ -9,52 +9,50 @@
   <style>
     :root { --accent: #ff6b35; --bg: #0f1020; --card: #1a1c33; --text: #e8e9f3; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Space Grotesk', system-ui, sans-serif; background: var(--bg); color: var(--text); }
-    section { padding: 90px 0; scroll-margin-top: 60px; }
+    body { font-family: 'Space Grotesk', system-ui, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    section { padding: 90px 0; scroll-margin-top: 60px; overflow: hidden; }
     .title { font-weight: 700; margin-bottom: 2.5rem; text-align: center; }
     .title::after { content: ""; display: block; width: 60px; height: 4px; background: var(--accent); margin: 12px auto 0; border-radius: 2px; }
 
-    /* Navbar */
     .navbar { transition: background .4s, padding .4s; padding: 18px 0; }
     .navbar.scrolled { background: rgba(15,16,32,.95); padding: 8px 0; backdrop-filter: blur(8px); }
     .navbar-brand { font-weight: 700; color: var(--accent) !important; }
     .nav-link { color: var(--text) !important; position: relative; }
     .nav-link::after { content: ""; position: absolute; left: 0; bottom: 2px; width: 0; height: 2px; background: var(--accent); transition: width .3s; }
-    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
-    /* Hero */
     #home { min-height: 100vh; display: flex; align-items: center; background: radial-gradient(circle at 20% 20%, #2b2d6b, transparent 55%), radial-gradient(circle at 80% 80%, #6b2b4a, transparent 50%), var(--bg); }
     .profil { width: 260px; height: 260px; object-fit: cover; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; border: 4px solid var(--accent); animation: morph 8s ease-in-out infinite; }
     @keyframes morph { 50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; } }
     .hero-text h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; }
     .hero-text .role { color: var(--accent); font-size: 1.2rem; letter-spacing: 1px; }
 
-    /* About */
     .about-card { background: var(--card); border-radius: 16px; padding: 30px; height: 100%; border-top: 4px solid var(--accent); transition: transform .3s, box-shadow .3s; }
     .about-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(255,107,53,.2); }
     .about-card h5 { color: var(--accent); font-weight: 600; }
 
-    /* Portofolio */
     #portofolio { background: #14152b; }
-    .porto-item { overflow: hidden; border-radius: 14px; position: relative; }
+    .porto-item { overflow: hidden; border-radius: 14px; }
     .porto-item img { width: 100%; display: block; transition: transform .5s; }
     .porto-item:hover img { transform: scale(1.12) rotate(1.5deg); }
 
-    /* Contact */
     .contact-card { background: var(--card); border-radius: 16px; padding: 35px; }
     .form-control, .form-select { background: #0f1020; border: 1px solid #343760; color: var(--text); }
     .form-control:focus, .form-select:focus { background: #0f1020; color: var(--text); border-color: var(--accent); box-shadow: 0 0 0 .2rem rgba(255,107,53,.25); }
     .btn-accent { background: var(--accent); color: #fff; border: 0; }
     .btn-accent:hover { background: #e55a28; color: #fff; }
-
     footer { background: #0a0b17; padding: 22px 0; text-align: center; color: #9ea0bb; }
 
-    /* Transisi scroll */
-    .reveal { opacity: 0; transform: translateY(50px); transition: opacity .8s ease, transform .8s ease; transition-delay: var(--d, 0s); }
-    .reveal.left { transform: translateX(-60px); }
-    .reveal.right { transform: translateX(60px); }
-    .reveal.zoom { transform: scale(.85); }
-    .reveal.show { opacity: 1; transform: none; }
+    /* ===== Animasi scroll: aktif tiap elemen masuk layar, reset saat keluar layar ===== */
+    .reveal { opacity: 0; transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); will-change: transform, opacity; }
+    .reveal.up    { transform: translateY(60px); }
+    .reveal.down  { transform: translateY(-50px); }
+    .reveal.left  { transform: translateX(-90px); }
+    .reveal.right { transform: translateX(90px); }
+    .reveal.zoom  { transform: scale(.4) rotate(-12deg); }
+    .reveal.tilt-l { transform: translateX(-100px) rotate(-8deg); }
+    .reveal.tilt-r { transform: translateX(100px) rotate(8deg); }
+    .reveal.show { opacity: 1; transform: none; transition-delay: var(--d, 0s); }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .profil { animation: none; } }
   </style>
 </head>
@@ -78,13 +76,13 @@
   <section id="home">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-7 order-2 order-md-1 hero-text reveal left">
-          <p class="role mb-2">Student | Web Developer | Web Designer</p>
-          <h1>Ahmad Zidane S</h1>
-          <a href="#about" class="btn btn-accent btn-lg mt-3 rounded-pill px-4">Kenali Saya</a>
+        <div class="col-md-7 order-2 order-md-1 hero-text">
+          <p class="role mb-2 reveal left" style="--d:.2s">Student | Web Developer | Web Designer</p>
+          <h1 class="reveal up" style="--d:.4s">Ahmad Zidane S</h1>
+          <a href="#about" class="btn btn-accent btn-lg mt-3 rounded-pill px-4 reveal up" style="--d:.6s">Kenali Saya</a>
         </div>
-        <div class="col-md-5 order-1 order-md-2 text-center reveal right">
-          <!-- Foto Profil -->
+        <div class="col-md-5 order-1 order-md-2 text-center reveal zoom">
+          <!-- Foto Profil-->
           <img src="img/profil.jpeg" alt="Foto profil" class="profil">
         </div>
       </div>
@@ -93,21 +91,21 @@
 
   <section id="about">
     <div class="container">
-      <h2 class="title reveal">About Me</h2>
+      <h2 class="title reveal down">About Me</h2>
       <div class="row g-4">
-        <div class="col-md-4 reveal" style="--d:0s">
+        <div class="col-md-4 reveal left">
           <div class="about-card">
             <h5>Siapa Saya</h5>
             <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
           </div>
         </div>
-        <div class="col-md-4 reveal" style="--d:.2s">
+        <div class="col-md-4 reveal up" style="--d:.15s">
           <div class="about-card">
             <h5>Apa yang Saya Kerjakan</h5>
             <p class="mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
           </div>
         </div>
-        <div class="col-md-4 reveal" style="--d:.4s">
+        <div class="col-md-4 reveal right" style="--d:.3s">
           <div class="about-card">
             <h5>Visi Saya</h5>
             <p class="mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
@@ -119,25 +117,25 @@
 
   <section id="portofolio">
     <div class="container">
-      <h2 class="title reveal">Portofolio</h2>
+      <h2 class="title reveal down">Portofolio</h2>
       <div class="row g-3">
-        <div class="col-6 col-md-3 reveal zoom" style="--d:0s"><div class="porto-item"><img src="img/foto1.jpeg" alt="Portofolio 1"></div></div>
-        <div class="col-6 col-md-3 reveal zoom" style="--d:.1s"><div class="porto-item"><img src="img/foto2.jpeg" alt="Portofolio 2"></div></div>
-        <div class="col-6 col-md-3 reveal zoom" style="--d:.2s"><div class="porto-item"><img src="img/foto3.jpg" alt="Portofolio 3"></div></div>
-        <div class="col-6 col-md-3 reveal zoom" style="--d:.3s"><div class="porto-item"><img src="img/foto4.svg" alt="Portofolio 4"></div></div>
-        <div class="col-6 col-md-3 reveal zoom" style="--d:0s"><div class="porto-item"><img src="img/foto5.jpg" alt="Portofolio 5"></div></div>
-        <div class="col-6 col-md-3 reveal zoom" style="--d:.1s"><div class="porto-item"><img src="img/foto6.jpg" alt="Portofolio 6"></div></div>
-        <div class="col-6 col-md-3 reveal zoom" style="--d:.2s"><div class="porto-item"><img src="img/foto7.jpg" alt="Portofolio 7"></div></div>
-        <div class="col-6 col-md-3 reveal zoom" style="--d:.3s"><div class="porto-item"><img src="img/foto8.jpg" alt="Portofolio 8"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-l" style="--d:0s"><div class="porto-item"><img src="img/foto1.jpeg" alt="Portofolio 1"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-r" style="--d:.1s"><div class="porto-item"><img src="img/foto2.jpeg" alt="Portofolio 2"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-l" style="--d:.2s"><div class="porto-item"><img src="img/foto3.jpg" alt="Portofolio 3"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-r" style="--d:.3s"><div class="porto-item"><img src="img/foto4.svg" alt="Portofolio 4"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-l" style="--d:0s"><div class="porto-item"><img src="img/foto5.jpg" alt="Portofolio 5"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-r" style="--d:.1s"><div class="porto-item"><img src="img/foto6.jpg" alt="Portofolio 6"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-l" style="--d:.2s"><div class="porto-item"><img src="img/foto7.jpg" alt="Portofolio 7"></div></div>
+        <div class="col-6 col-md-3 reveal tilt-r" style="--d:.3s"><div class="porto-item"><img src="img/foto8.jpg" alt="Portofolio 8"></div></div>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
-      <h2 class="title reveal">Contact</h2>
+      <h2 class="title reveal down">Contact</h2>
       <div class="row justify-content-center">
-        <div class="col-md-7 reveal">
+        <div class="col-md-7 reveal up">
           <form class="contact-card">
             <div class="mb-3"><label for="email" class="form-label">Email address</label><input type="email" class="form-control" id="email" placeholder="nama@contoh.com"></div>
             <div class="mb-3"><label for="nama" class="form-label">Name</label><input type="text" class="form-control" id="nama"></div>
@@ -155,13 +153,26 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Animasi dari scroll layar
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
-    }, { threshold: 0.15 });
+      entries.forEach(e => {
+        if (e.intersectionRatio >= 0.2) e.target.classList.add('show');
+        else if (e.intersectionRatio === 0) e.target.classList.remove('show');
+      });
+    }, { threshold: [0, 0.2] });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Navbar solid saat di-scroll
     const nav = document.getElementById('nav');
-    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-    window.addEventListener('scroll', onScroll); onScroll();
+    const links = document.querySelectorAll('.nav-link');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+    function onScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+      let cur = 0;
+      sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= 120) cur = i; });
+      links.forEach((a, i) => a.classList.toggle('active', i === cur));
+    }
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   </script>
 </body>
 </html>
