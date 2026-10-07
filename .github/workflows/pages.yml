@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,6 +13,10 @@ permissions:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -21,10 +26,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload website
+      - name: Upload Portfolio
         uses: actions/upload-pages-artifact@v3
         with:
           path: './web-profil'
 
       - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
