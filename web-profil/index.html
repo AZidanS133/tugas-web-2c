@@ -35,7 +35,7 @@
     .about-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(255,107,53,.2); }
     .about-card h5 { color: var(--accent); font-weight: 600; }
 
-    /* Portofolio: semua gambar kotak seragam */
+    /* Portofolio */
     #portofolio { background: #14152b; }
     .porto-item { overflow: hidden; border-radius: 14px; aspect-ratio: 1; background: var(--card); }
     .porto-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
@@ -50,7 +50,7 @@
     .btn-accent:hover { background: #e55a28; border-color: #e55a28; color: #fff; }
     footer { background: #0a0b17; padding: 22px 0; text-align: center; color: #9ea0bb; font-size: .9rem; }
 
-    /* Animasi scroll (berulang) */
+    /* Animasi Scroll */
     .reveal { opacity: 0; transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); will-change: transform, opacity; }
     .reveal.up    { transform: translateY(60px); }
     .reveal.down  { transform: translateY(-50px); }
@@ -104,19 +104,19 @@
         <div class="col-12 col-md-6 col-lg-4 reveal left">
           <div class="about-card">
             <h5>Siapa Saya</h5>
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            <p class="mb-0">Saya adalah seorang Mahasiswa Universitas Nusantara PGRI dari Fakultas Teknik dan Ilmu Komputer Prodi Sistem Informasi. Saat ini Saya sedang mendalami materi tentang Pemograman Web. Saya juga belajar tentang database berbasis MySQL. Dan belajar modelling bisnis menggunakan Software Bizagi Modeler.</p>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4 reveal up" style="--d:.15s">
           <div class="about-card">
             <h5>Apa yang Saya Kerjakan</h5>
-            <p class="mb-0">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+            <p class="mb-0">Saya mengerjakan beberapa project kecil seperti web sederhana, dan juga saat ini saya mengerjakan capstone project yang diadakan oleh prodi. Saya juga mengerjakan beberapa karya tulis bertema teknologi informasi.</p>
           </div>
         </div>
         <div class="col-12 col-md-8 col-lg-4 reveal right" style="--d:.3s">
           <div class="about-card">
             <h5>Visi Saya</h5>
-            <p class="mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+            <p class="mb-0">Visi saya adalah menjadi mahasiswa yang bermanfaat bagi banyak orang serta memberikan kontribusi yang baik bagi universitas saya. Serta berpartisipasi aktif dalam kegiatan magang yang diadakan oleh kampus.</p>
           </div>
         </div>
       </div>
@@ -163,7 +163,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Animasi berulang: "show" dipasang saat masuk layar, dilepas saat benar-benar keluar
+    // Animasi berulang
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.intersectionRatio >= 0.15) e.target.classList.add('show');
@@ -172,7 +172,7 @@
     }, { threshold: [0, 0.15] });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // Navbar solid saat scroll + menu aktif + tutup menu mobile setelah klik
+    // Navbar solid saat scroll 
     const nav = document.getElementById('nav');
     const links = document.querySelectorAll('.nav-link');
     const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
