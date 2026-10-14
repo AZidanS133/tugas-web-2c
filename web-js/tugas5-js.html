@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Percabangan IF</title>
+</head>
+<body>
+  <h1>Tugas 5 JavaScript Percabangan</h1>
+
+  <!-- percabangan if -->
+    <script type="text/javascript">
+      // jika password bukan admin123 sistem akan lanjut ke kondisi else
+        let password = prompt('Masukan Password Anda');
+
+        if (password == 'admin123') {
+            document.write('<h3>Selamat Datang Admin</h3>');
+        } else {
+            document.write('<h3>Maaf Password Salah</h3>');
+        }
+    </script>
+
+  <!-- percabangan if-else-if -->
+   <script type="text/javascript">
+        let nilai = prompt('Masukan Nilai Anda');
+
+        if (nilai > 85) {
+            document.write('<h3>Nilai A</h3>');
+        } else if(nilai >= 75) {
+            document.write('<h3>Nilai B</h3>');
+        } else {
+            document.write('<h3>Nilai C</h3>');
+        }
+    </script>
+
+
+  <!-- percabangan switch -->
+   <script type="text/javascript">
+        let hari = prompt('Masukan Kode Hari [1 s/d 7]');
+
+        switch(hari) {
+            case "1" : 
+            document.write('<h2>SENIN</h2>');
+            break;
+            case "2" : 
+            document.write('<h2>SELASA</h2>');
+            break;
+            case "3" : 
+            document.write('<h2>RABU</h2>');
+            break;
+            case "4" : 
+            document.write('<h2>KAMIS</h2>');
+            break;
+            case "5" : 
+            document.write('<h2>JUMAT</h2>');
+            break;
+            case "6": 
+            document.write('<h2>SABTU</h2>');
+            break;
+            case "7" : 
+            document.write('<h2>MINGGU</h2>');
+            break;
+            default :
+            document.write('<h2>MAAF KODE SALAH</h2>');
+        }
+    </script>
+
+</body>
+</html>
