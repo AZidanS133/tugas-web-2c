@@ -1,0 +1,36 @@
+/* Background website memakai foto */
+body {  
+  min-height: 100vh;
+  background-image: url("../img/background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Lapisan gelap tipis supaya tulisan mudah dibaca */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 30, 10, 0.45);
+  z-index: -1;
+}
+
+/* Kartu utama semi transparan */
+.todo-card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 0;
+  border-radius: 1rem;
+}
+
+/* Barang yang sudah dicentang */
+.selesai .teks-barang {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.teks-barang {
+  cursor: pointer;
+  word-break: break-word;
+}
