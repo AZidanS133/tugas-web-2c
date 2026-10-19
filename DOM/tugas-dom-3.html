@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar DOM</title>
+</head>
+<body>
+    	
+    <h1 id="judul" onclick="ubahWarna()">Belajar DOM Event</h1>
+
+    <p>paragraf 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aspernatur sapiente nulla maiores possimus. Quibusdam quod tenetur dolorem, quas natus harum commodi fuga distinctio reiciendis provident dolore illum saepe veniam!</p>
+ 
+    <p>paragraf 2 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur architecto natus nisi error ducimus ea voluptates tempore, labore deserunt, necessitatibus illum, aliquid voluptatum nemo obcaecati ratione reiciendis molestiae alias cupiditate.</p>
+ 
+    <h3 class="daftar">Daftar</h3>
+    <ul>
+        <li>Argentina</li>
+        <li>America</li>
+        <li>India</li>
+        <li>Indonesia</li>
+        <li>Belanda</li>
+    </ul>
+
+
+  <script>
+        //belajar DOM Event
+        let p=document.getElementsByTagName('p');
+        function ubahWarna() {            
+            p[0].style.backgroundColor="yellow";
+            p[1].style.backgroundColor="yellow";
+        }
+ 
+        //ubah warna paragraf 1 kembali ke putih
+        p[0].addEventListener("click", function(){
+            this.style.backgroundColor="white";
+        });
+
+       p[1].addEventListener("click", function(){
+            this.style.backgroundColor="green";
+        });
+ 
+        //menambahkan negara baru di list
+        let daftar=document.querySelector("h3");
+ 
+        daftar.addEventListener("click", function() {
+            let list=document.querySelector("ul");
+            list.innerHTML+="<li>Negara Baru</li>";
+        });
+ </script>
+  
+</body>
+</html>

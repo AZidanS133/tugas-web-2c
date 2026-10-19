@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Object Motor</title>
+</head>
+<body>
+    <h2>Motor</h2>
+    <p id="info"></p>
+    <p id="status"><b>Status:</b> Motor mati</p>
+
+    <button onclick="motor1.nyalakan()">Nyalakan</button>
+    <button onclick="motor1.maju()">Maju</button>
+    <button onclick="motor1.mundur()">Mundur</button>
+    <button onclick="motor1.belokKiri()">Belok Kiri</button>
+    <button onclick="motor1.belokKanan()">Belok Kanan</button>
+    <button onclick="motor1.berhenti()">Berhenti</button>
+    <button onclick="motor1.matikan()">Matikan</button>
+
+    <script>
+        // membuat object dengan constructor
+        function Motor(merek, warna, tahun) {
+            this.merek = merek;
+            this.warna = warna;
+            this.tahun = tahun;
+            this.hidup = false;
+
+            // fungsi bantu untuk menampilkan status di halaman
+            this.tampilkan = function (pesan) {
+                document.getElementById("status").innerHTML = "<b>Status:</b> " + pesan;
+            };
+
+            this.nyalakan = function () {
+                this.hidup = true;
+                this.tampilkan(this.merek + " menyala");
+            };
+
+            this.matikan = function () {
+                this.hidup = false;
+                this.tampilkan(this.merek + " dimatikan");
+            };
+
+            // perintah untuk menggerakkan motor
+            this.gerak = function (aksi) {
+                if (!this.hidup) {
+                    this.tampilkan("Nyalakan motor dulu!");
+                    return;
+                }
+                this.tampilkan(this.merek + " " + aksi);
+            };
+
+            this.maju = function () { this.gerak("bergerak maju"); };
+            this.mundur = function () { this.gerak("bergerak mundur"); };
+            this.belokKiri = function () { this.gerak("belok ke kiri"); };
+            this.belokKanan = function () { this.gerak("belok ke kanan"); };
+            this.berhenti = function () { this.gerak("berhenti"); };
+        }
+
+        // membuat instance object
+        const motor1 = new Motor("Honda Vario", "Merah", 2022);
+
+        // tampilkan info motor di halaman
+        document.getElementById("info").innerHTML =
+            "Merek: " + motor1.merek + ", Warna: " + motor1.warna + ", Tahun: " + motor1.tahun;
+    </script>
+</body>
+</html>

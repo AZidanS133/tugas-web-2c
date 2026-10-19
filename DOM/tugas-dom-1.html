@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar DOM Selector</title>
+</head>
+<body>
+    <h1 id="judul">Belajar DOM Selector</h1>
+ 
+    <p>paragraf 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aspernatur sapiente nulla maiores possimus. Quibusdam quod tenetur dolorem, quas natus harum commodi fuga distinctio reiciendis provident dolore illum saepe veniam!</p>
+ 
+    <p>paragraf 2 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur architecto natus nisi error ducimus ea voluptates tempore, labore deserunt, necessitatibus illum, aliquid voluptatum nemo obcaecati ratione reiciendis molestiae alias cupiditate.</p>
+ 
+    <h3 class="daftar">Daftar</h3>
+    <ul>
+        <li>Argentina</li>
+        <li>America</li>
+        <li>India</li>
+        <li>Indonesia</li>
+        <li>Belanda</li>
+    </ul>
+
+      <script>
+        // dom untuk mengambil h1 judul
+            let judul=document.getElementById('judul');
+            console.log(judul);
+
+        // dom untuk mengambil paragraf
+            let p=document.getElementsByTagName('p');
+            console.log(p);
+        
+        //  dom untuk mengambil h3 daftar  
+            let daftar=document.getElementsByClassName('daftar');
+            console.log(daftar);
+        
+       // menggunakan regex
+            let title=document.querySelector('#judul');
+            console.log(title);
+        
+        // dom untuk mengambil list
+            let list=document.querySelectorAll('li');
+            console.log(list);
+        
+      </script>
+  
+</body>
+</html>
