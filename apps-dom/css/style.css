@@ -1,36 +1,60 @@
-/* Background website memakai foto */
-body {  
+/* ===== Background ===== */
+html {
+  min-height: 100%;
+}
+
+body {
   min-height: 100vh;
-  background-image: url("../img/background.jpeg");
-  background-size: cover;
+  min-height: 100dvh;                 
+  background-color: #0a3d91;          
+  background-image: url("../img/background.jpg");
+  background-size: cover;             
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed;       
 }
 
-/* Lapisan gelap tipis supaya tulisan mudah dibaca */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 30, 10, 0.45);
-  z-index: -1;
+/* Background fixed */
+@media (max-width: 991.98px) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
-/* Kartu utama semi transparan */
+/* ===== Kartu ===== */
 .todo-card {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.93);
   border: 0;
   border-radius: 1rem;
 }
 
-/* Barang yang sudah dicentang */
+/* Judul */
+.todo-card h1 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+/* ===== Daftar barang ===== */
+.list-group-item {
+  flex-wrap: wrap;                    /* tombol turun ke bawah jika layar sempit */
+  padding: 0.85rem 1rem;
+}
+
+.teks-barang {
+  flex: 1 1 10rem;
+  min-width: 0;
+  font-size: 1.05rem;
+  word-break: break-word;
+}
+
+/* Barang yang sudah dicentang (dipakai jika fitur centang ditambahkan) */
 .selesai .teks-barang {
   text-decoration: line-through;
   color: #6c757d;
 }
 
-.teks-barang {
-  cursor: pointer;
-  word-break: break-word;
+/* Bagian layar */
+@media (min-width: 1200px) {
+  .todo-card {
+    margin-top: 2rem;
+  }
 }
